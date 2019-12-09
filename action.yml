@@ -2,5 +2,5 @@ name: 'github-actions-godolint'
 description: 'Dockerfile linter'
 author: 'Tomohiro Kusumoto <zabio1192@gmail.com>'
 branding:
-  icon: framer
+  icon: anchor
   color: blue
