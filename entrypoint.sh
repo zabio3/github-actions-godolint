@@ -1,12 +1,8 @@
 #!/bin/bash
 
-set -e
-
 cd "$GITHUB_WORKSPACE"
 
-if [ ! -z "${GITHUB_TOKEN}" ];
-then
-  sh -c "godolint $DOCKERFILE_PATH"
-else
-  echo "Annotations inactive. No GitHub token provided"
-fi
+export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
+
+find . -name "Dockerfile*" | xargs godolint \
+  | /bin/reviewdog -efm="%f:%l %m" -name="${INPUT_TOOL_NAME}" -reporter="${INPUT_REPORTER}" -level="${INPUT_LEVEL}"
