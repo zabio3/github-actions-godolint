@@ -16,4 +16,5 @@ RUN curl -L -s https://github.com/zabio3/godolint/releases/download/v0.1.1/godol
 
 COPY entrypoint.sh /entrypoint.sh
 COPY bin/reviewdog /bin/reviewdog
+RUN chmod +x /bin/reviewdog
 ENTRYPOINT ["/entrypoint.sh"]
